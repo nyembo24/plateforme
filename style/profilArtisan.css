@@ -1,0 +1,33 @@
+.profile-cover {
+    background-color: #1877f2;
+    height: 200px;
+}
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    margin-top: -75px;
+}
+.bibliotheque{
+    background-color: rgb(184, 184, 209);
+    height: 40vh;
+    padding: 1%;
+
+}
+.bibliotheque img{
+    width: 15%;
+    height: 20%;
+    border: 5px solid white;
+
+}
+@media (max-width: 518px) {
+
+.bibliotheque img{
+    width: 50%;
+    height: 500%;
+    border: 5px solid white;
+
+}
+}
