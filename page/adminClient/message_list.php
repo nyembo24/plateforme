@@ -17,7 +17,7 @@ $val = $valeur->list_utilisateur_sms_clien();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Liste des utilisateurs</title>
   <link rel="stylesheet" href="../../bootstrap.css"/>
-  <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
   <style>
     body {
       background-color: #f8f9fa;

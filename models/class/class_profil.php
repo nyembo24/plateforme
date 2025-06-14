@@ -10,9 +10,11 @@ class profil{
     private $con;
     private $tmp_photo;
     private $tmp_dossier;
+    private $description;
     public function __construct($con){
         $this->con=$con;
     }
+    public function set_description($description) : void{$this->description=$description;}
     public function set_id($id) : void{$this->id=$id;}
     public function set_nom($nom) : void{$this->nom=$nom;}
     public function set_profession($profession) : void{$this->profession=$profession;}
@@ -23,9 +25,9 @@ class profil{
     public function set_tmp_dossier($tmp_dossier) : void{$this->tmp_dossier=$tmp_dossier;}
     public function set_tel($tel) : void{$this->tel=$tel;}
     public function update(){
-        $query="update profil set nom=?,profession=?,image_profil=?,document=?,email=?,tel=? where id_ar=?";
+        $query="update profil set nom=?,profession=?,image_profil=?,document=?,email=?,tel=?,description=? where id_ar=?";
         $stmt=$this->con->prepare($query);
-        if($stmt->execute(array($this->nom,$this->profession,$this->photo_profil,$this->document,$this->mail,$this->tel,$this->id))){
+        if($stmt->execute(array($this->nom,$this->profession,$this->photo_profil,$this->document,$this->mail,$this->tel,$this->description,$this->id))){
             return true;
         }
         else{
@@ -33,9 +35,9 @@ class profil{
         }
     }
     public function inserer(){
-        $query="insert into profil(nom,profession,image_profil,document,email,tel,id_ar)values(?,?,?,?,?,?,?)";
+        $query="insert into profil(nom,profession,image_profil,document,email,tel,id_ar,description)values(?,?,?,?,?,?,?,?)";
         $stmt=$this->con->prepare($query);
-        if($stmt->execute(array($this->nom,$this->profession,$this->photo_profil,$this->document,$this->mail,$this->tel,$this->id))){
+        if($stmt->execute(array($this->nom,$this->profession,$this->photo_profil,$this->document,$this->mail,$this->tel,$this->id,$this->description))){
             return true;
         }
         else{

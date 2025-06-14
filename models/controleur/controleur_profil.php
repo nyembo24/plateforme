@@ -18,6 +18,7 @@
         $valeur->set_tel(htmlspecialchars($_POST["tel"]));
         $valeur->set_tmp_photo(htmlspecialchars($_FILES["profil"]["tmp_name"]));
         $valeur->set_tmp_dossier(htmlspecialchars($_FILES["document"]["tmp_name"]));
+        $valeur->set_description(htmlspecialchars($_POST["description"]));
         if($valeur->deplacer()){
             if($valeur->existe()){
                 if($valeur->update()){

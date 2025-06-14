@@ -1,0 +1,34 @@
+<?php 
+class publique{
+    private $id;
+    private $nom;
+    private $profession;
+    private $photo_profil;
+    private $document;
+    private $mail;
+    private $tel;
+    private $con;
+    public function __construct($con){
+        $this->con=$con;
+    }
+    public function set_id($id) : void{$this->id=$id;}
+    public function set_nom($nom) : void{$this->nom=$nom;}
+    public function set_profession($profession) : void{$this->profession=$profession;}
+    public function set_photo_profil($photo_profil) : void{$this->photo_profil=$photo_profil;}
+    public function set_document($document) : void{$this->document=$document;}
+    public function set_mail($mail) : void{$this->mail=$mail;}
+    public function set_tel($tel) : void{$this->tel=$tel;}
+    public function selection(){
+        $query="select profil.id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array(1));
+        return $stmt;
+    }
+    public function selection_un_artisan(){
+        $query="select * from profil where id_pr=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id));
+        return $stmt->fetch();
+    }
+}
+?>

@@ -46,7 +46,7 @@ CREATE TABLE `artisan` (
 
 LOCK TABLES `artisan` WRITE;
 /*!40000 ALTER TABLE `artisan` DISABLE KEYS */;
-INSERT INTO `artisan` VALUES (6,'ny','$2y$10$T6zMEvWbIVGRV4a7iuz39.B8Mu.X2ejGvn71mCjcuqSFicUGjnB6K',NULL,NULL,NULL,NULL,'09900','morisho@gmail.com',0,NULL,NULL,NULL);
+INSERT INTO `artisan` VALUES (6,'ny','$2y$10$T6zMEvWbIVGRV4a7iuz39.B8Mu.X2ejGvn71mCjcuqSFicUGjnB6K',NULL,NULL,NULL,NULL,'09900','morisho@gmail.com',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `artisan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,6 +184,7 @@ CREATE TABLE `profil` (
   `email` text,
   `tel` text,
   `id_ar` int DEFAULT NULL,
+  `description` text,
   PRIMARY KEY (`id_pr`),
   KEY `artisan` (`id_ar`),
   CONSTRAINT `artisan` FOREIGN KEY (`id_ar`) REFERENCES `artisan` (`id_ar`)
@@ -196,7 +197,7 @@ CREATE TABLE `profil` (
 
 LOCK TABLES `profil` WRITE;
 /*!40000 ALTER TABLE `profil` DISABLE KEYS */;
-INSERT INTO `profil` VALUES (2,'name','artisan','defaul.png','Chapitre III.pdf','exemple@gmail.com','+243...',6);
+INSERT INTO `profil` VALUES (2,'morisho nyembo delphin','menusier','Capture d’écran du 2024-10-10 20-00-52.png','Chapitre III.pdf','morishonyembo24@gmail.com','0990578941',6,'Avec plus de 10 ans d&#039;expérience, Jean crée des meubles sur mesure adaptés à vos besoins.');
 /*!40000 ALTER TABLE `profil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-14 11:31:48
+-- Dump completed on 2025-06-15  0:31:46

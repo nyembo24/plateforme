@@ -1,3 +1,11 @@
+<?php 
+require_once('connexion/conn.php');
+require_once("models/class/class_profil_publique.php");
+$db=new connexion();
+$conn=$db->getconnexion();
+$valeur= new publique($conn);
+$val=$valeur->selection();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,51 +13,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootsrap-icons/font/bootstrap-icons.min.css">
     
 </head>
 <body>
     <head>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">acceuil</a>
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" href="#" aria-current="page">Home
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="page/inscrire.php">S'incrire</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">portail</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                <a class="dropdown-item" href="page/connexionclient.php">client</a>
-                                <a class="dropdown-item" href="page/connexionartisan.php">artiste</a>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <form class="d-flex my-2 my-lg-0">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+        <?php require_once("navbar.php"); ?>
+    </head>
+    <main class="container py-4">
+        <h2 class="mb-4">Nos Artisans à Butembo</h2>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <?php while($contenu=$val->fetch()){ ?>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <a href="image/<?= $contenu["image_profil"]?>"><img src="image/<?= $contenu["image_profil"]?>" class="card-img-top" alt="Photo Artisan" style="height: 200px; object-fit: cover;"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $contenu["nom"]?></h5>
+                        <p class="card-text text-muted"><i class=""></i><?= $contenu["profession"]?></p>
+                        <p class="card-text"><?= $contenu["description"]?></p>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="profil_artisan.php?id=<?= $contenu["id_pr"]?>" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-eye"></i> Voir Profil
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-    </head>
-    <main>
-        
+            <?php }?>
+            <!-- Artisan 2 (exemple) -->
+        </div>
     </main>
+
     <footer>
 
     </footer>

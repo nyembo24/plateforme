@@ -7,7 +7,7 @@
   <title>Compléter le profil</title>
   <link rel="stylesheet" href="../../bootstrap.css" />
   <link rel="stylesheet" href="../../style/style1.css" />
-  <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
   <style>
     body {
       background-color: #f8f9fa;
@@ -45,6 +45,10 @@
               <div class="mb-3">
                 <label class="form-label" for="">Profession</label>
                 <input name="profession" required autocomplete="off" class="form-control" type="text" placeholder="Entrez votre profession">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="">Description</label>
+                <textarea required name="description" id="" rows="3" class="form-control"></textarea>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="">Photo de profil</label>
