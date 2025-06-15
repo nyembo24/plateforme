@@ -1,7 +1,7 @@
 <?php
-if(! isset($_GET["id"]) and ! empty($_GET["id"])){
+if(!isset($_GET["id"]) || empty($_GET["id"])){
     header("location:../index.php");
-    exit();
+    exit;
 }
 require_once('../connexion/conn.php');
 require_once("../models/class/class_profil_publique.php");
@@ -10,6 +10,8 @@ $conn=$db->getconnexion();
 $valeur= new publique($conn);
 $valeur->set_id(htmlspecialchars($_GET['id']));
 $val=$valeur->selection_un_artisan();
+$valeur->set_id(htmlspecialchars($_GET["id"]));
+$commentaire=$valeur->select_commentaire();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,9 +42,11 @@ $val=$valeur->selection_un_artisan();
                 </a>
                 <h3 class="mt-3"><?= $val["nom"] ?></h3>
                 <p class="text-muted mb-2"><?= $val["profession"] ?></p>
-                <a href="" class="btn btn-outline-primary btn-sm">
-                    <i class="bi bi-chat-dots"></i> Contacter
-                </a>
+                <?php if(isset($_SESSION["patron"])){ ?>
+                    <a href="message.php?id=<?= $_GET["id"] ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> Contacter</a>
+                <?php }else{ ?>
+                    <a href="inscrire.php" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> Contacter</a>
+                <?php } ?>
             </div>
 
             <hr>
@@ -78,32 +82,17 @@ $val=$valeur->selection_un_artisan();
             <hr>
             <!-- Section Commentaires -->
             <div class="commentaires-section">
-            <h4 class="text-center mb-3">Commentaires des utilisateurs</h4>
-
-            <div class="commentaire mb-3">
-                <p class="comment-text" id="comment1">
-                Trembien ça vas bien, merci beaucoup de demander, j'espère que tout va bien aussi de ton côté.
-                </p>
-                <button class="btn-toggle-comment" onclick="toggleComment('comment1', this)">Voir plus</button>
-            </div>
-            </div>
-
-            <!-- Formulaire d'ajout d'avis -->
-            <div class="ajouter-commentaire mt-4">
-            <h5>Laisser un avis</h5>
-            <form id="form-avis" method="POST" action="ajouter_avis.php">
-                <div class="mb-3">
-                <textarea 
-                    name="commentaire" 
-                    id="commentaire" 
-                    class="form-control" 
-                    rows="3" 
-                    placeholder="Écrivez votre avis ici..." 
-                    required
-                ></textarea>
+                <?php if(isset($_SESSION['patron'])){
+                    require_once("formulaire_ajouter_avis.php");
+                }
+                 ?>
+                <h4 class="text-center mb-3">Commentaires des utilisateurs</h4>
+                <?php while($vl=$commentaire->fetch()){ ?>
+                <div class="commentaire mb-3">
+                    <p class="comment-text" id="comment1"><?= $vl["description"] ?></p>
+                    <button class="btn-toggle-comment" onclick="toggleComment('comment1', this)">Voir plus</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </form>
+                <?php } ?>
             </div>
 
             <hr>

@@ -9,7 +9,7 @@
 <body>
   <div class="login-container">
     <div class="avatar">
-      <img src="../image/img1.png" alt="logo">
+      <img src="../image/defaul.png" alt="logo">
     </div>
     <form action="../models/controleur/controleur_inscription.php" method="post">
       <div class="input-group">

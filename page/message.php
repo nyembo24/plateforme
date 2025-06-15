@@ -1,4 +1,5 @@
-<?php 
+<?php
+  die;
   if(isset($_GET["message"]) and isset($_GET["message"])){
     session_start();
     $_SESSION['id_de'] = htmlspecialchars($_GET['message']);

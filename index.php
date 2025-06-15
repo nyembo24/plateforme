@@ -34,7 +34,7 @@ $val=$valeur->selection();
                         <p class="card-text"><?= $contenu["description"]?></p>
                     </div>
                     <div class="card-footer text-end">
-                        <a href="profil_artisan.php?id=<?= $contenu["id_pr"]?>" class="btn btn-outline-primary btn-sm">
+                        <a href="page/profil_artisan_client.php?id=<?= $contenu["id_pr"]?>" class="btn btn-outline-primary btn-sm">
                             <i class="bi bi-eye"></i> Voir Profil
                         </a>
                     </div>
