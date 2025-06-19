@@ -46,5 +46,16 @@ class message{
         $stmt->execute(array($_SESSION['user']));
         return $stmt;
     }
+    public function liste_utilisateur_avis(){
+        $query="select * from message where id_ar=? and client=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id_ar,$_SESSION['patron']));
+        return $stmt;
+    }
+    public function inserer_utilisateur_avi(){
+        $query="insert into message(description,client,id_ar,editeur)values(?,?,?,?)";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->message,$_SESSION["patron"],$_SESSION["avis"],0));
+    }
 }
 ?>

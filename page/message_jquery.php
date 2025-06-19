@@ -18,9 +18,16 @@ if(isset($_SESSION["user"])){
     $_SESSION["id_ar"]=$_GET["id_ar"];
     header("location:?");
   }
+  if(isset($_SESSION["id_de"])){
+    $val = $valeur->selection_client();
+  }
   $editeur = "0";
   //var_dump($_SESSION);die;
-  $val = $valeur->selection_client();
+  if(isset($_SESSION["avis"])){
+    $valeur->set_id_ar($_SESSION["avis"]);
+    $val=$valeur->liste_utilisateur_avis();
+  }
+
 }
 else{
   header("location:../index.php");

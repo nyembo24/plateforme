@@ -12,7 +12,11 @@
     $db=new connexion();
     $conn=$db->getconnexion();
     $valeur= new message($conn);
-    //var_dump($_SESSION);die;
+    //var_dump($_POST);die;
+    if(isset($_SESSION["avis"])){
+        $valeur->set_message(htmlspecialchars($_POST["description"]));
+        $valeur->inserer_utilisateur_avi();
+    }
     if(isset($_POST["description"]) and isset($_SESSION["user"]) and isset($_SESSION["id_de"])){
         $valeur->set_message(htmlspecialchars($_POST["description"]));
         $valeur->set_id_de(htmlspecialchars($_SESSION["id_de"]));

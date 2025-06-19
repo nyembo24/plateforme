@@ -1,5 +1,4 @@
 <?php
-  die;
   if(isset($_GET["message"]) and isset($_GET["message"])){
     session_start();
     $_SESSION['id_de'] = htmlspecialchars($_GET['message']);
@@ -9,6 +8,11 @@
     session_start();
     $_SESSION["id_de"]=$_GET["id_de"];
     $_SESSION["id_ar"]=$_GET["id_ar"];
+    header("location:?");
+  }
+  if(isset($_GET["id"])){
+    session_start();
+    $_SESSION["avis"]=htmlspecialchars($_GET['id']);
     header("location:?");
   }
 ?>
