@@ -1,3 +1,16 @@
+*{
+    /* border: 1px solid red; */
+}
+body{
+    width: 99%;
+    margin: auto;
+    font-family: 'Verdana', 'Comic Sans Ms', 'Arial', serif;
+    background-image: url("../image/image_developement/pexels-werlleymeira-1486470.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1em;
+    padding: 20px;
+}
 .profile-pic {
     width: 120px;
     height: 120px;
@@ -11,35 +24,25 @@
     background-color: #e9ecef;
     position: relative;
 }
-.bibliotheque img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
-    margin: 10px auto;
-    display: block;
-    gap: 200px;
+.bibliotheque div{
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    padding: 3em;
+    gap: 20px;
 }
-.commentaires-section {
-    max-width: 600px;
-    margin: 30px auto 0 auto;
-    background-color: white;
+.bibliotheque img{
+    width: 200px;
+    border: 2px solid white;
+}
+.utilisateurs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
 }
-
-.commentaire {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.btn-toggle-comment {
-    color: #0d6efd;
-    cursor: pointer;
-    font-size: 0.9rem;
-    background: none;
-    border: none;
-    padding: 0;
+.container{
+    border: 20%;
+    padding: 2%;
 }

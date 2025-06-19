@@ -52,7 +52,7 @@ $commentaire=$valeur->select_commentaire();
             <hr>
 
             <!-- Infos -->
-            <div class="row text-start">
+            <div class="row text-start info">
                 <div class="col-md-6 mb-2">
                     <p><i class="bi bi-geo-alt-fill me-1 text-primary"></i><strong>Ville :</strong> Butembo</p>
                     <p><i class="bi bi-briefcase-fill me-1 text-primary"></i><strong>Travail :</strong> Freelance</p>
@@ -86,13 +86,15 @@ $commentaire=$valeur->select_commentaire();
                     require_once("formulaire_ajouter_avis.php");
                 }
                  ?>
-                <h4 class="text-center mb-3">Commentaires des utilisateurs</h4>
-                <?php while($vl=$commentaire->fetch()){ ?>
-                <div class="commentaire mb-3">
-                    <p class="comment-text" id="comment1"><?= $vl["description"] ?></p>
-                    <button class="btn-toggle-comment" onclick="toggleComment('comment1', this)">Voir plus</button>
+                <div class="utilisateurs">
+                    <h4 class="text-center mb-3">Commentaires des utilisateurs</h4>
+                    <?php while($vl=$commentaire->fetch()){ ?>
+                    <div class="commentaire mb-3">
+                        <p class="comment-text" id="comment1"><?= $vl["description"] ?></p>
+                        <button class="btn-toggle-comment" onclick="toggleComment('comment1', this)">Voir plus</button>
+                    </div>
+                    <?php } ?>
                 </div>
-                <?php } ?>
             </div>
 
             <hr>

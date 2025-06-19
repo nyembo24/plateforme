@@ -1,0 +1,20 @@
+*{
+    /* border: 1px solid red; */
+}
+body{
+    width: 99%;
+    margin: auto;
+    font-family: 'Verdana', 'Comic Sans Ms', 'Arial', serif;
+    background-image: url("../image/image_developement/pexels-werlleymeira-1486470.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1em;
+    padding: 20px;
+}
+.card-header{
+    border: 3px;
+    text-align: center;
+}
+.container{
+    border: 20px;
+}

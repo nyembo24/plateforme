@@ -6,40 +6,10 @@
     <title>Inscription</title>
     <link rel="stylesheet" href="../bootstrap.css">
     <link rel="stylesheet" href="../bootstrap-icons/font/bootstrap-icons.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-        }
-        .card {
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .card-header {
-            border-bottom: none;
-            text-align: center;
-            padding: 1.5rem;
-        }
-        .card-header h3 {
-            font-weight: bold;
-        }
-        .form-control, .form-select {
-            border-radius: 10px;
-        }
-        .btn-primary {
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .container {
-            margin-top: 5%;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/inscrire.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-2">
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="card shadow-lg">

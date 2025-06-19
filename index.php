@@ -18,8 +18,41 @@ $val=$valeur->selection();
 </head>
 <body>
     <?php require_once("navbar.php"); ?>
+    <div class="container1 mt-1">
+        <p id="presentation">Vous êtes un professionnel à la recherche de chantiers ? <a href="page/inscrire.php">Inscrivez-vous gratuitement</a></p>
+        <div>
+            <p>Le moyen fiable d'engager un artisan</p>
+            <img src="image/image.png" alt="">
+        </div>
+    </div>
+    <div class="engager mt-2">
+        <h3>Comment engager le bon artisan</h3>
+        <div class="imgage mt-2">
+            <div>
+                <img src="image/image_developement/postYourJob.svg" alt="">
+                <h5 class="text-center">ÉTAPE 1</h5>
+                <p class="text-center">publier votre projet</p>
+            </div>
+            <div>
+                <img src="image/image_developement/reviewAndChoose.svg" alt="">
+                <h5 class="text-center">ÉTAPE 2</h5>
+                <p class="text-center">Les artisans vous contacte</p>
+            </div>
+            <div>
+                <img src="image/image_developement/tradespeopleRespond.svg" alt="">
+                <h5 class="text-center">ÉTAPE 3</h5>
+                <p class="text-center">Consultez leurs profils</p>
+            </div>
+        </div>
+    </div>
+    <div class="pourqoi">
+        <h3>Pourquoi notre plateforme est la solution fiable</h3>
+        <p>Il n'est pas toujours facile de faire appel à un artisan quand on en a besoin. notre plateforme  est le moyen fiable qui vous aide à engager l'artisan qu'il vous faut pour vos travaux</p>
+        <h3>Prêt à engager un artisan ?</h3>
+        <a href="page/inscrire.php" class="btn btn-outline-primary btn-sm">inscriver vous ici</a>
+    </div>
     <main class="container py-4">
-        <h2 class="mb-4 text-center text-primary">Nos Artisans à Butembo</h2>
+        <h2 class="mb-4 text-center text-primary">Nos Artisans à Butembo le plus populaire</h2>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <?php while($contenu=$val->fetch()){ ?>
@@ -45,7 +78,7 @@ $val=$valeur->selection();
     </main>
 
     <footer>
-        <p>&copy; <?= date("Y") ?> Plateforme Artisanale. Tous droits réservés. <a href="#">Mentions légales</a></p>
+        <p id="reserver">&copy; <?= date("Y") ?> Plateforme Artisanale. Tous droits réservés à <a href="#">plateforme</a></p>
     </footer>
     <script src="bootstrap.bundle.js"></script>
 </body>
