@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light mt-2">
             <div class="container">
                 <!-- Logo / Accueil -->
                 <a class="navbar-brand" href="?acceuil">

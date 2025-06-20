@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<style>
+    .navbar-toggler-icon {
+        background-color: white;
+    }
+</style>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-black text-white mt-2">
     <div class="container">
-        <a class="navbar-brand" href="#"><i class="bi bi-bootstrap-fill"></i> Navbar</a>
+        <a class="navbar-brand text-white" href="#"><i class="bi bi-bootstrap-fill"></i> Navbar</a>
 
         <!-- Bouton pour collapse -->
         <button
@@ -18,17 +24,17 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="Adminclient.php" aria-current="page">
+                    <a class="nav-link active text-white" href="Adminclient.php" aria-current="page">
                         <i class="bi bi-house-door"></i> Accueil
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="demande.php" aria-current="page">
+                    <a class="nav-link active text-white" href="demande.php" aria-current="page">
                         <i class="bi bi-list-ul"></i> Demande
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="message_list.php">
+                    <a class="nav-link text-white" href="message_list.php">
                         <i class="bi bi-chat-dots"></i> Message
                     </a>
                 </li>
@@ -44,7 +50,7 @@
                 </form>
 
                 <!-- Bouton Déconnexion -->
-                <a title="Déconnexion" href="../../page/kill_proccess.php" class="btn btn-outline-danger">
+                <a title="Déconnexion" href="../../page/kill_proccess.php" class="btn btn-outline-danger text-white">
                     <i class="bi bi-box-arrow-right"></i> Déconnexion
                 </a>
             </div>

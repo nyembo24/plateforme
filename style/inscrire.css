@@ -5,9 +5,10 @@ body{
     width: 99%;
     margin: auto;
     font-family: 'Verdana', 'Comic Sans Ms', 'Arial', serif;
-    background-image: url("../image/image_developement/pexels-werlleymeira-1486470.jpg");
+    background-image: url("../image/image_developement/login.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     font-size: 1em;
     padding: 20px;
 }

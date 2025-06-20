@@ -2,7 +2,8 @@ body{
     width: 99%;
     margin: auto;
     font-family: 'Verdana', 'Comic Sans Ms', 'Arial', serif;
-    background-image: url("../image/image_developement/pexels-werlleymeira-1486470.jpg");
+    background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(28, 29, 0, 0.1)),
+      url("../image/image_developement/pexels-werlleymeira-1486470.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:local;

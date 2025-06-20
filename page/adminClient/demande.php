@@ -12,15 +12,14 @@ $val = $valeur->afficher();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../bootstrap.css">
     <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../style/demande.css">
 </head>
-
 <body>
     <?php require_once("../../navbar/navbarClient.php") ?>
     <div class="row p-4">
