@@ -19,28 +19,65 @@ $val = $valeur->selection();
     <link rel="stylesheet" href="../../bootstrap.css">
     <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../style/admin_client.css">
+    <style>
+        /* General Styles */
+        * {
+            font-size: 1em;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.1)),
+              url("../image/image_developement/client.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .bloc-bienvenu {
+            display: flex;
+            flex-direction: column;
+            border-radius: 2%;
+            height: 60vh;
+            justify-content: center;
+            align-items: center;
+            background-color: blueviolet;
+        }
+        .bloc-bienvenu h4, .bloc-bienvenu p {
+            color: aliceblue;
+            text-align: center;
+            font-size: 2em;
+            padding: 1%;
+        }
+        .artisans-list {
+            background-color: rgb(203, 209, 209);
+            margin-top: 2%;
+            padding: 2%;
+            color: white;
+        }
+        .populaires {
+            background-color: cadetblue;
+            padding: 1%;
+        }
+        .populaires h4, .populaires span {
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <?php include_once("../../navbar/navbarClient.php"); ?>
 
-    <main class="container py-4">
+    <main class="px-4">
         <!-- Bienvenue -->
-        <div class="mb-4 p-4 bg-light rounded shadow-sm text-center">
-            <h4>Bienvenue sur votre espace client !</h4>
-            <p>Découvrez les artisans disponibles à Butembo selon vos besoins. Publiez un projet ou explorez les profils pour entrer en contact.</p>
+        <div class="bloc-bienvenu">
+            <div>
+                <h4>Bienvenue sur votre espace client !</h4>
+                <p>Découvrez les artisans disponibles à Butembo selon vos besoins. Publiez un projet ou explorez les profils pour entrer en contact.</p>
+            </div>
             <a href="demande.php" class="btn btn-primary mt-2">Publier un projet</a>
         </div>
 
-        <!-- Recherche -->
-        <form method="get" action="recherche.php" class="mb-4">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Rechercher un artisan (ex: maçon, plombier)...">
-                <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
-            </div>
-        </form>
-
         <!-- Liste des artisans -->
-        <h2 class="mb-4 text-center">Nos Artisans à Butembo</h2>
+        <h2 class="artisans-list mb-4 text-center">Nos Artisans à Butembo</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php while($contenu = $val->fetch()) { ?>
             <div class="col">
@@ -64,7 +101,7 @@ $val = $valeur->selection();
         </div>
 
         <!-- Catégories populaires -->
-        <div class="my-5">
+        <div class="my-5 populaires">
             <h4 class="text-center mb-3">Catégories populaires</h4>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <span class="badge bg-primary p-2">Maçonnerie</span>

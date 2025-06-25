@@ -43,6 +43,15 @@
                 exit;
             }
         }
+        elseif($_POST["fonction"]==2){
+            if($valeur->login_admin()){
+                if(isset($_POST["remember"]) and $_POST["remember"]=="on"){
+                    //continuer
+                }
+                header("location:../../page/adminAdministrateur/acceuil.php");
+                exit;
+            }
+        }
         else{
             if($valeur->login_artisan()){
                 if(isset($_POST["remember"]) and $_POST["remember"]=="on"){
@@ -61,7 +70,11 @@
         if($_POST["fonction"]==0){
             header("location:../../page/connexionclient.php?sms=nom d'utilisateur ou mots de passe incorrect");
             exit;
-        }else{
+        }elseif($_POST["fonction"]==2){
+            header("location:../../page/connexionadmin.php?sms=nom d'utilisateur ou mots de passe incorrect");
+            exit;
+        }
+        else{
             header("location:../../page/connexionartisan.php?sms=nom d'utilisateur ou mots de passe incorrect");
             exit;
         }

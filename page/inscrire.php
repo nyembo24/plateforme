@@ -17,6 +17,9 @@
                         <h3>Inscription</h3>
                     </div>
                     <div class="card-body p-4">
+                        <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
+                            <p style="color: red;"><?=$_GET["sms"] ?></p>
+                        <?php }?>
                         <form action="../models/controleur/controleur_inscription.php" method="post">
                             <div class="mb-4">
                                 <label for="username" class="form-label">Nom d'utilisateur</label>

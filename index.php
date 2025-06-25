@@ -6,6 +6,9 @@ $conn=$db->getconnexion();
 $valeur= new publique($conn);
 $val=$valeur->selection();
 ?>
+<?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
+    <script>alert('<?=$_GET["sms"] ?>')</script>
+<?php }?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

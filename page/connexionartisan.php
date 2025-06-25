@@ -22,6 +22,9 @@
         <input name="pwd" autocomplete="off" type="password" id="password" placeholder="mots de passe" required>
         <span class="toggle-password" onclick="togglePassword()">👁️</span>
       </div>
+      <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
+        <p style="color: red;"><?=$_GET["sms"] ?></p>
+      <?php }?>
       <div class="options">
         <label><input name="remember" type="checkbox" id="remember"> souvenir</label>
         <a href="mots_de_passe_oublier.php" class="forgot-password">mots de passe oublier?</a>

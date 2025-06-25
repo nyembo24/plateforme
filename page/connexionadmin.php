@@ -13,7 +13,7 @@
     </div>
     <form action="../models/controleur/controleur_inscription.php" method="post">
       <div class="input-group">
-      <input type="hidden" name="fonction" value="0">
+        <input type="hidden" name="fonction" value="2">
         <label for="username"><i class="fas fa-user"></i> nom d'utilisateur</label>
         <input name="usr" autocomplete="off" type="text" id="username" placeholder="nom d'utilisateur" required>
       </div>

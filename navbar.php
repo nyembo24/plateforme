@@ -29,6 +29,9 @@
                                 <a class="dropdown-item" href="page/connexionartisan.php">
                                     <i class="bi bi-brush"></i> Artiste
                                 </a>
+                                <a class="dropdown-item" href="page/connexionadmin.php">
+                                    <i class="bi bi-shield-lock-fill"></i> Admin
+                                </a>
                             </div>
                         </li>
                     </ul>

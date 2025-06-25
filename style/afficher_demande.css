@@ -1,0 +1,21 @@
+*{
+    font-size: 1em;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.5)),
+      url("../image/image_developement/artisan1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  /* Card Styles */
+  .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+      background-color: #007bff;
+  }

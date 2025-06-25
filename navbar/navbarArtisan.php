@@ -1,4 +1,9 @@
-<nav class="navbar navbar-light bg-light fixed-top">
+<style>
+    .navbar-toggler {
+        background-color: white;
+    }
+</style>
+<nav class="navbar navbar-light bg-dark fixed-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- Bouton pour ouvrir le menu -->
         <button
@@ -15,12 +20,12 @@
         <div class="d-flex align-items-center">
             <!-- Lien vers le profil avec photo -->
             <a title="Profil" href="../../page/adminArtisan/profil.php">
-                <img class="avatar" src="../../image/<?= $_SESSION["profil"] ?>" alt="profil" style="width:40px; height:40px; border-radius:50%;">
+                <img class="avatar" src="../../image/<?= $_SESSION["profil"] ?>" alt="profil" style="width:40px; height:40px; border-radius:50%; border: 1px solid white;">
             </a>
 
             <!-- Bouton Déconnexion avec espace de 20px -->
-            <a title="Déconnexion" href="../../page/kill_proccess.php" class="btn btn-outline-danger" style="margin-left: 20px;">
-                <i class="bi bi-box-arrow-right"></i> Déconnexion
+            <a title="Déconnexion" href="../../page/kill_proccess.php" class="btn btn-outline-danger text-white" style="margin-left: 20px;">
+                <i class="bi bi-box-arrow-right text-white"></i> Déconnexion
             </a>
         </div>
     </div>
@@ -52,15 +57,6 @@
                     <a class="nav-link" href="../../page/adminArtisan/message_liste_artisan.php">
                         <i class="bi bi-chat-dots"></i> Message
                     </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i> Options
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action 1</a></li>
-                        <li><a class="dropdown-item" href="#">Action 2</a></li>
-                    </ul>
                 </li>
             </ul>
         </div>

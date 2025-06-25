@@ -1,14 +1,72 @@
 /* General Styles */
-*{
-    /* border: 1px solid red; */
-    font-size: 1em;
+* {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.1)),
-      url("../image/image_developement/client.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.1)),
+    url("../image/image_developement/client.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bloc-bienvenu {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  text-align: center;
+  padding: 2%;
+}
+
+.bloc-bienvenu h4,
+.bloc-bienvenu p {
+  color: aliceblue;
+  font-size: 2em;
+  margin-bottom: 1%;
+}
+
+.bloc-bienvenu .btn {
+  margin-top: 1%;
+}
+
+.artisans-list {
+  background-color: rgb(203, 209, 209);
+  margin-top: 2%;
+  padding: 2%;
+  color: white;
+  text-align: center;
+}
+
+.populaires {
+  background-color: cadetblue;
+  padding: 2%;
+  text-align: center;
+}
+
+.populaires h4 {
+  color: white;
+  margin-bottom: 1%;
+}
+
+.populaires .badge {
+  margin: 0.5%;
+}
+
+blockquote {
+  font-style: italic;
+  color: #555;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 1%;
+  border-top: 1px solid #ddd;
 }

@@ -19,6 +19,7 @@ $val = $valeur->afficher_tout_demande();
     <link rel="stylesheet" href="../../bootstrap.css">
     <link rel="stylesheet" href="../../style/style1.css">
     <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../style/afficher_demande.css">
 </head>
 <body>
     <?php require_once("../../navbar/navbarArtisan.php") ?>

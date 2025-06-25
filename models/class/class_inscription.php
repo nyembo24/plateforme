@@ -82,6 +82,17 @@ class user{
             }
         }
     }
+    public function login_admin(){
+        $query="select * from utilisateur where username=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->usr));
+        if($val=$stmt->fetch()){
+            if(password_verify($this->pwd,$val['password'])){
+                $_SESSION["admin"]=$val['id_usr'];
+                return true;
+            }
+        }
+    }
     public function profil(){
         $query="select image_profil from profil where id_ar=?";
         $stmt=$this->con->prepare($query);
