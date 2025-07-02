@@ -3,7 +3,7 @@
 }
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.5)),
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 1), rgb(0,0,0,0.7)),
       url("../image/image_developement/artisan1.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -17,5 +17,5 @@ body {
   }
   
   .card-body {
-      background-color: #007bff;
+    background-color: #011327;
   }

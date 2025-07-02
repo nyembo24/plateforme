@@ -8,8 +8,27 @@ if (! isset($_SESSION["patron"])) {
 $db = new connexion();
 $conn = $db->getconnexion();
 $valeur = new publique($conn);
-$val = $valeur->selection();
+$nbr=$valeur->pagination_profil()["nb"];
+$afficher=9;
+$point=ceil($nbr/$afficher);
+if(isset($_GET["page"]) and ! empty($_GET["page"])){
+
+    $debut=htmlspecialchars($_GET["page"]);
+}
+else{
+    $debut=1;
+}
+$limite=($debut-1)*$afficher;
+$valeur->set_limite($limite);
+$valeur->set_afficher($afficher);
+$val=$valeur->selection();
+if(empty($valeur->selection()->fetch())){
+    //header("location:?");
+}
 ?>
+<?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
+    <script>alert('<?=$_GET["sms"] ?>')</script>
+<?php }?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -88,7 +107,7 @@ $val = $valeur->selection();
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($contenu["nom"]) ?></h5>
                         <p class="card-text text-muted"><?= htmlspecialchars($contenu["profession"]) ?></p>
-                        <p class="card-text"><?= htmlspecialchars($contenu["description"]) ?></p>
+                        <p class="card-text"><?= $contenu["description"] ?></p>
                     </div>
                     <div class="card-footer text-end">
                         <a href="../profil_artisan_client.php?id=<?= $contenu["id_pr"] ?>" class="btn btn-outline-primary btn-sm">
@@ -99,6 +118,15 @@ $val = $valeur->selection();
             </div>
             <?php } ?>
         </div>
+        <?php for($i=1;$i<=$point;$i++){ ?>
+        <?php if($point!=1){
+            if(isset($_GET["page"]) and $_GET["page"]==$i){
+            ?>
+        <a href="?page=<?= $i ?>" class="btn btn-danger"><?= $i ?></a>
+        <?php } else{ ?>
+            <a href="?page=<?= $i ?>" class="btn btn-success"><?= $i ?></a>
+        <?php } }?>
+        <?php }?>
 
         <!-- Catégories populaires -->
         <div class="my-5 populaires">
@@ -137,7 +165,6 @@ $val = $valeur->selection();
             </div>
         </section>
     </main>
-
     <footer class="text-center py-3 bg-light mt-5 border-top">
         <p class="mb-0">&copy; <?= date("Y") ?> Artisan Butembo - Tous droits réservés</p>
     </footer>

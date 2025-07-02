@@ -4,7 +4,24 @@ require_once("models/class/class_profil_publique.php");
 $db=new connexion();
 $conn=$db->getconnexion();
 $valeur= new publique($conn);
+$nbr=$valeur->pagination_profil()["nb"];
+$afficher=9;
+$point=ceil($nbr/$afficher);
+if(isset($_GET["page"]) and ! empty($_GET["page"])){
+
+    $debut=htmlspecialchars($_GET["page"]);
+}
+else{
+    $debut=1;
+}
+$limite=($debut-1)*$afficher;
+$valeur->set_limite($limite);
+$valeur->set_afficher($afficher);
 $val=$valeur->selection();
+if(empty($valeur->selection()->fetch())){
+    //header("location:?");
+    //exit;
+}
 ?>
 <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
     <script>alert('<?=$_GET["sms"] ?>')</script>
@@ -78,6 +95,15 @@ $val=$valeur->selection();
             </div>
             <?php }?>
         </div>
+        <?php for($i=1;$i<=$point;$i++){ ?>
+        <?php if($point!=1){
+            if(isset($_GET["page"]) and $_GET["page"]==$i){
+            ?>
+        <a href="?page=<?= $i ?>" class="btn btn-danger"><?= $i ?></a>
+        <?php } else{ ?>
+            <a href="?page=<?= $i ?>" class="btn btn-success"><?= $i ?></a>
+        <?php } }?>
+        <?php }?>
     </main>
 
     <footer>

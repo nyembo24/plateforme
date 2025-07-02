@@ -9,9 +9,13 @@ class publique{
     private $mail;
     private $tel;
     private $con;
+    private $limite;
+    private $afficher;
     public function __construct($con){
         $this->con=$con;
     }
+    public function set_limite($limite) : void{$this->limite=$limite;}
+    public function set_afficher($afficher) : void{$this->afficher=$afficher;}
     public function set_id($id) : void{$this->id=$id;}
     public function set_nom($nom) : void{$this->nom=$nom;}
     public function set_profession($profession) : void{$this->profession=$profession;}
@@ -21,7 +25,7 @@ class publique{
     public function set_tel($tel) : void{$this->tel=$tel;}
     public function set_description($description) : void{$this->description=$description;}
     public function selection(){
-        $query="select profil.id_ar as id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=?";
+        $query="select profil.id_ar as id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=? LIMIT $this->limite, $this->afficher";
         $stmt=$this->con->prepare($query);
         $stmt->execute(array(1));
         return $stmt;
@@ -48,5 +52,13 @@ class publique{
         $stmt->execute(array($this->id));
         return $stmt;
     }
+    public function pagination_profil(){
+        $query="select count(id_ar) as nb from artisan where activer=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array(1));
+        return $stmt->fetch();
+
+    }
+
 }
 ?>

@@ -5,7 +5,7 @@ body{
     width: 99%;
     margin: auto;
     font-family: 'Verdana', 'Comic Sans Ms', 'Arial', serif;
-    background-image: url("../image/image_developement/login.jpg");
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 1), rgb(0,0,0,0.7)), url("../image/image_developement/login.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

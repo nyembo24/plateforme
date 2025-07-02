@@ -1,14 +1,14 @@
 <?php
 require_once("../../connexion/conn.php");
-require_once("../../models/class/class_message.php");
-if (!isset($_SESSION["user"])) {
+require_once("../../models/class/class_valider_artisan.php");
+if (!isset($_SESSION["admin"])) {
     header("location:../../index.php");
     exit;
 }
 $db = new connexion();
 $conn = $db->getconnexion();
-$valeur = new message($conn);
-$val = $valeur->list_utilisateur_sms_artisan();
+$valeur = new valider($conn);
+$val = $valeur->non_valider();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -46,19 +46,19 @@ $val = $valeur->list_utilisateur_sms_artisan();
   </style>
 </head>
 <body>
-  <?php require_once("../../navbar/navbarArtisan.php") ?>
+  <?php require_once("../../navbar/navbarAdmin.php") ?>
 
-  <div class="container mt-5">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="card">
           <div class="card-header bg-primary text-white text-center">
-            <h4><i class="bi bi-chat-dots me-2"></i>Utilisateurs de messagerie</h4>
+            <h4><i class="bi bi-person-fill me-2"></i>Utilisateurs non valider</h4>
           </div>
           <div class="card-body">
             <?php while($contanu = $val->fetch()){ ?>
-              <a class="user-link" href="../message.php?message=<?= $contanu['id_de'] ?>">
-                <i class="bi bi-person-fill me-2"></i><?= htmlspecialchars($contanu['username']) ?>
+              <a class="user-link" href="profil_artisan.php?profil=<?= $contanu['id_ar'] ?>">
+                <i class="bi bi-person-fill me-2"></i><?= $contanu['username'] ?>
               </a>
             <?php } ?>
           </div>
