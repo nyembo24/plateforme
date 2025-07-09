@@ -22,5 +22,17 @@ class valider{
             return false;
         }
     }
+    public function email(){
+        $query="select email from artisan where id_ar=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id));
+        return $stmt->fetch()["email"];
+    }
+    public function lister_avis(){
+        $query="select avis.id_ar,artisan.username from avis,artisan where avis.id_ar=artisan.id_ar and avis.valider=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array(0));
+        return $stmt;
+    }
 
 }

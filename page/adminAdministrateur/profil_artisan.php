@@ -23,6 +23,67 @@ $val=$valeur->selection_un_artisan();
 </head>
 <body class="bg-light">
     <?php require_once("../../navbar/navbarAdmin.php") ?>
+    <?php if(isset($_GET["rejeter"]) and !empty($_GET["rejeter"])){?>
+        <!-- Modal trigger button (masqué) -->
+        <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#modalId"
+            style="display: none;"
+        >
+            Launch
+        </button>
+        
+        <!-- Modal Body -->
+        <div
+            class="modal fade"
+            id="modalId"
+            tabindex="-1"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            role="dialog"
+            aria-labelledby="modalTitleId"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                role="document"
+            >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Message
+                        </h5>
+                        <a href="?profil=<?= $_GET["profil"] ?>">
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <form action="../../models/controleur/controleur_valider_artisan.php" method="post">
+                            <input name="rejeter" type="hidden" value="<?= htmlspecialchars($_GET["profil"]) ?>">
+                            <textarea placeholder="raison de rejet" name="message" rows="3" required class="form-control"></textarea>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const myModal = new bootstrap.Modal(document.getElementById("modalId"));
+                myModal.show(); // Affiche la modal immédiatement
+            });
+        </script>
+
+    <?php } ?>
+
     <div class="container mt-5">
         <!-- Couverture -->
         <div class="profile-cover rounded shadow-sm" 
@@ -44,7 +105,7 @@ $val=$valeur->selection_un_artisan();
                     <a href="message.php?id=<?= $_GET["id"] ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> Contacter</a>
                 <?php }else{ ?>
                     <a href="../../models/controleur/controleur_valider_artisan.php?valider=<?= $_GET["profil"] ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> valider</a>
-                    <a href="?rejeter=<?= $_GET["profil"] ?>" class="btn btn-outline-danger text-dark btn-sm"><i class="bi bi-chat-dots"></i> réjeter</a>
+                    <a href="?profil=<?= $_GET["profil"] ?> && rejeter=<?= $_GET["profil"] ?>" class="btn btn-outline-danger text-dark btn-sm"><i class="bi bi-chat-dots"></i> réjeter</a>
                 <?php } ?>
             </div>
 

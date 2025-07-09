@@ -37,9 +37,9 @@ class publique{
         return $stmt->fetch();
     }
     public function insert_commentaire(){
-        $query="insert into avis(description,id_ar)values(?,?)";
+        $query="insert into avis(description,id_ar,valider)values(?,?,?)";
         $stmt=$this->con->prepare($query);
-        if($stmt->execute(array($this->description,$this->id))){
+        if($stmt->execute(array($this->description,$this->id,0))){
             return true;
         }
         else{

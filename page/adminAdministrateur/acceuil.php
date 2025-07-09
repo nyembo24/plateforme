@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php require_once("../../navbar/navbarAdmin.php") ?>
+    <?php header("location:valider_artisan.php");exit; ?>
     <script src="../../bootstrap.bundle.js"></script>
 </body>
 </html>
