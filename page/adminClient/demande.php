@@ -1,6 +1,7 @@
 <?php
 require_once("../../connexion/conn.php");
 require_once("../../models/class/class_demande.php");
+require_once("../../models/class/class_recherche.php");
 if (! isset($_SESSION["patron"])) {
     header("location:../../index.php");
     exit;
@@ -8,7 +9,19 @@ if (! isset($_SESSION["patron"])) {
 $db = new connexion();
 $conn = $db->getconnexion();
 $valeur = new demande($conn);
-$val = $valeur->afficher();
+$requte=new recherche($conn);
+if(isset($_POST["query"]) and ! empty($_POST["query"])){
+    $requte->set_query(htmlspecialchars($_POST["query"]));
+    $val=$requte->demande_client();
+    $values=$_POST["query"];
+}else{
+    $val = $valeur->afficher();
+    $values="";
+}
+if(isset($_GET["mod"]) and ! empty($_GET["mod"])){
+    $valeur->set_id(htmlspecialchars($_GET["mod"]));
+    $modifier= $valeur->selection_une();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +37,34 @@ $val = $valeur->afficher();
     <?php require_once("../../navbar/navbarClient.php") ?>
     <div class="row p-4">
         <div class="col-lg-4">
+            <?php if(isset($_GET["mod"]) and ! empty($_GET["mod"])){ ?>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">modifier liste de Demande</h3>
+                </div>
+                <div class="card-body">
+                    <form action="../../models/controleur/controleur_demande.php" method="post">
+                        <input type="text" hidden name="modifier" value="<?= $_GET["mod"] ?>">
+                        <div class="mb-3">
+                            <label for="" class="form-label">sujet</label>
+                            <input value="<?= $modifier["sujet"] ?>" name="sujet" required autocomplete="off" type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description</label>
+                            <textarea required autocomplete="off" class="form-control" name="description" id="" rows="3"><?= $modifier["description"] ?></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-primary w-100">modifier</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="?" class="btn btn-primary w-100">annuler</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <?php }else{ ?>
             <div class="card">
                 <div class="card-header">
                     <h3 class="text-center">liste de Demande</h3>
@@ -42,6 +83,7 @@ $val = $valeur->afficher();
                     </form>
                 </div>
             </div>
+            <?php } ?>
         </div>
         <div class="col-lg-8">
             <div class="card">
@@ -135,7 +177,7 @@ $val = $valeur->afficher();
                                         </td>
                                         <td>
                                             <a
-                                                href="?"
+                                                href="?mod=<?= $contenu["id_de"] ?>"
                                                 class="btn btn-success btn-sm">
                                                 <i class="bi bi-pencil-fill"> modifier</i>
                                             </a>

@@ -62,6 +62,23 @@ class demande{
         $stmt->execute(array(0));
         return $stmt;
     }
+    public function selection_une(){
+        $query="select sujet,description from demande where id_de=? and id_cl=?";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id,$_SESSION["patron"]));
+        return $stmt->fetch();
+
+    }
+    public function modifier(){
+        $query="update demande set sujet=?,description=? where id_de=?";
+        $stmt=$this->con->prepare($query);
+        if($stmt->execute(array($this->sujet,$this->descript,$this->id))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }
 ?>

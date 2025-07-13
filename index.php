@@ -1,9 +1,11 @@
 <?php 
 require_once('connexion/conn.php');
 require_once("models/class/class_profil_publique.php");
+require_once('models/class/class_recherche.php');
 $db=new connexion();
 $conn=$db->getconnexion();
 $valeur= new publique($conn);
+$requte=new recherche($conn);
 $nbr=$valeur->pagination_profil()["nb"];
 $afficher=9;
 $point=ceil($nbr/$afficher);
@@ -17,11 +19,15 @@ else{
 $limite=($debut-1)*$afficher;
 $valeur->set_limite($limite);
 $valeur->set_afficher($afficher);
-$val=$valeur->selection();
-if(empty($valeur->selection()->fetch())){
-    //header("location:?");
-    //exit;
+if(isset($_POST["query"]) and ! empty($_POST["query"])){
+    $requte->set_query(htmlspecialchars($_POST["query"]));
+    $val=$requte->artisan();
+    $values=$_POST["query"];
+}else{
+    $val=$valeur->selection();
+    $values="";
 }
+
 ?>
 <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
     <script>alert('<?=$_GET["sms"] ?>')</script>
@@ -38,6 +44,7 @@ if(empty($valeur->selection()->fetch())){
 </head>
 <body>
     <?php require_once("navbar.php"); ?>
+    <?php if(! isset($_POST["query"]) and empty($_POST["query"])or isset($_POST["query"]) and empty($_POST["query"])){ ?>
     <div class="container1 mt-1">
         <p id="presentation">Vous êtes un professionnel à la recherche de chantiers ? <a href="page/inscrire.php">Inscrivez-vous gratuitement</a></p>
         <div>
@@ -71,6 +78,7 @@ if(empty($valeur->selection()->fetch())){
         <h3>Prêt à engager un artisan ?</h3>
         <a href="page/inscrire.php" class="btn btn-outline-primary btn-sm">inscriver vous ici</a>
     </div>
+    <?php } ?>
     <main class="container py-4">
         <h2 class="mb-4 text-center text-primary">Nos Artisans à Butembo le plus populaire</h2>
 

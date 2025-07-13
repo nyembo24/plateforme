@@ -23,7 +23,7 @@
                         <form action="../models/controleur/controleur_inscription.php" method="post">
                             <div class="mb-4">
                                 <label for="username" class="form-label">Nom d'utilisateur</label>
-                                <input name="usr" id="username" required autocomplete="off" type="text" class="form-control">
+                                <input maxlength="20" name="usr" id="username" required autocomplete="off" type="text" class="form-control">
                             </div>
                             <div class="mb-4">
                                 <label for="password" class="form-label">Mot de passe</label>

@@ -37,8 +37,8 @@
                     </ul>
 
                     <!-- Formulaire de recherche -->
-                    <form class="d-flex my-2 my-lg-0">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <form class="d-flex my-2 my-lg-0" action="?" method="post">
+                        <input autocomplete="off" value="<?= $values ?>" name="query" class="form-control me-sm-2" type="text" placeholder="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                             <i class="bi bi-search"></i>
                         </button>

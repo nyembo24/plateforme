@@ -1,6 +1,7 @@
 <?php 
 require_once('../../connexion/conn.php');
 require_once("../../models/class/class_profil_publique.php");
+require_once("../../models/class/class_recherche.php");
 if (! isset($_SESSION["patron"])) {
     header("location:../../index.php");
     exit;
@@ -8,6 +9,7 @@ if (! isset($_SESSION["patron"])) {
 $db = new connexion();
 $conn = $db->getconnexion();
 $valeur = new publique($conn);
+$requte=new recherche($conn);
 $nbr=$valeur->pagination_profil()["nb"];
 $afficher=9;
 $point=ceil($nbr/$afficher);
@@ -21,9 +23,13 @@ else{
 $limite=($debut-1)*$afficher;
 $valeur->set_limite($limite);
 $valeur->set_afficher($afficher);
-$val=$valeur->selection();
-if(empty($valeur->selection()->fetch())){
-    //header("location:?");
+if(isset($_POST["query"]) and ! empty($_POST["query"])){
+    $requte->set_query(htmlspecialchars($_POST["query"]));
+    $val=$requte->artisan();
+    $values=$_POST["query"];
+}else{
+    $val=$valeur->selection();
+    $values="";
 }
 ?>
 <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>

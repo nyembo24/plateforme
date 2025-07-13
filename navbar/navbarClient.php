@@ -42,8 +42,8 @@
 
             <!-- Barre de recherche + Déconnexion -->
             <div class="d-flex align-items-center">
-                <form class="d-flex me-3">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search" />
+                <form class="d-flex me-3" action="?" method="post">
+                    <input value="<?= $values ?>" autocomplete="off" name="query" class="form-control me-sm-2" type="text" placeholder="Search" />
                     <button class="btn btn-outline-success" type="submit">
                         <i class="bi bi-search"></i>
                     </button>

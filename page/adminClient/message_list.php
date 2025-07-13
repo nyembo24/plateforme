@@ -1,6 +1,7 @@
 <?php
 require_once("../../connexion/conn.php");
 require_once("../../models/class/class_message.php");
+require_once("../../models/class/class_recherche.php");
 if (!isset($_SESSION["patron"])) {
     header("location:../../index.php");
     exit;
@@ -8,7 +9,15 @@ if (!isset($_SESSION["patron"])) {
 $db = new connexion();
 $conn = $db->getconnexion();
 $valeur = new message($conn);
-$val = $valeur->list_utilisateur_sms_clien();
+$requte=new recherche($conn);
+if(isset($_POST["query"]) and ! empty($_POST["query"])){
+  $requte->set_query(htmlspecialchars($_POST["query"]));
+  $val=$requte->message_client();
+  $values=$_POST["query"];
+}else{
+  $val = $valeur->list_utilisateur_sms_clien();
+  $values="";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">

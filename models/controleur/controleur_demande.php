@@ -9,6 +9,18 @@
     $conn=$db->getconnexion();
     $valeur= new demande($conn);
     //var_dump($_POST);die;
+    if(isset($_POST["modifier"]) and isset($_POST["sujet"]) and isset($_POST["description"])){
+        $valeur->set_sujet(htmlspecialchars($_POST["sujet"]));
+        $valeur->set_descript(htmlspecialchars($_POST["description"]));
+        $valeur->set_id(htmlspecialchars($_POST["modifier"]));
+        if($valeur->modifier()){
+            $sms="modification effectuer avec succès";
+        }else{
+            $sms="echec de modification";
+        }
+        header("location:../../page/adminClient/demande.php?sms=$sms");
+        exit;
+    }
     if(isset($_POST["sujet"]) and isset($_POST["description"])){
         $valeur->set_sujet(htmlspecialchars($_POST["sujet"]));
         $valeur->set_descript(htmlspecialchars($_POST["description"]));

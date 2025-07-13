@@ -11,7 +11,7 @@ html, body {
 
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
 }
 
 .messages {
@@ -52,6 +52,7 @@ p.gauche {
   background: white;
   position: sticky;
   bottom: 0;
+  gap: 10px;
 }
 
 textarea {

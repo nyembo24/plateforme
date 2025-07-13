@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../bootsrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand navbar-light bg-dark">
+  <nav class="navbar navbar-expand navbar-light bg-dark" style="width: 99%;margin:auto">
     <div class="container">
       <div class="nav navbar-nav">
         <a class="nav-item nav-link active text-white" href="#" aria-current="page"

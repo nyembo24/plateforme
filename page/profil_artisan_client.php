@@ -67,7 +67,7 @@ $commentaire=$valeur->select_commentaire();
 
             <div>
                 <h5 class="text-center text-secondary">À propos</h5>
-                <p class="text-center"><?= nl2br($val["description"]) ?></p>
+                <p class="text-center"><?= $val["description"] ?></p>
             </div>
 
             <hr>
