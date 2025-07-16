@@ -5,6 +5,7 @@ html, body {
   font-family: Arial, sans-serif;
   font-size: 1em;
   background: #f2f2f2;
+  background: url("../image/image_developement/sms.jpg");
 }
 
 .chat-container {
@@ -21,6 +22,7 @@ html, body {
   background: white;
   display: flex;
   flex-direction: column;
+  background: url("../image/image_developement/sms.jpg");
 }
 
 p.droit, p.gauche {

@@ -33,7 +33,7 @@
                 }
             }
         }else{
-            $sms="echec d'enregistrement veuiller réssayer";
+            $sms="echec de modification veuiller réssayer";
             header("location:../../page/adminArtisan/formulaire_profil.php?sms=$sms");
             exit;
         }
