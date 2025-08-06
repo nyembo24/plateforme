@@ -139,7 +139,7 @@ $images = $valeur->lister_galeri();
 
                 <?php if ($i != 0): ?>
                     <div class="col-6 col-md-4 col-lg-3">
-                        <a href="galeri.php?photo=<?= $_SESSION['user'] ?>" title="Voir toute la galerie">
+                        <a target="_blank" href="galeri.php?photo=<?= $_SESSION['user'] ?>" title="Voir toute la galerie">
                             <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="bi bi-images" style="font-size: 2rem;"></i>
                                 <small>Voir plus</small>

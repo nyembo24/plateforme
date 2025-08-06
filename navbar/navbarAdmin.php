@@ -7,7 +7,9 @@
     class="navbar navbar-expand-sm navbar-light bg-dark"
 >
     <div class="container">
-        <a class="navbar-brand text-white" href="acceuil.php">Acceuil</a>
+        <a class="navbar-brand text-white" href="acceuil.php">
+            <i class="bi bi-house-door"></i> Acceuil
+        </a>
         <button
             class="navbar-toggler d-lg-none"
             type="button"
@@ -29,19 +31,19 @@
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
-                        >utilisateur</a
                     >
+                        <i class="bi bi-person"></i> utilisateur
+                    </a>
                     <div
                         class="dropdown-menu"
                         aria-labelledby="dropdownId"
                     >
-                        <a class="dropdown-item" href="valider_artisan.php"
-                            >nos valider</a
-                        >
-                        <a class="dropdown-item" href="lister_avis.php"
-                            >envis</a
-                        >
-
+                        <a class="dropdown-item" href="valider_artisan.php">
+                            <i class="bi bi-check-circle"></i> nos valider
+                        </a>
+                        <a class="dropdown-item" href="lister_avis.php">
+                            <i class="bi bi-chat-dots"></i> envis
+                        </a>
                     </div>
                 </li>
             </ul>

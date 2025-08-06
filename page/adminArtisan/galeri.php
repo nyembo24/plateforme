@@ -40,6 +40,21 @@ $images = $valeur->lister_galeri()->fetchAll();
       object-fit: cover;
       border-radius: 10px;
     }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand i {
+      margin-right: 8px;
+    }
+    .alert-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .alert-info i {
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -50,11 +65,15 @@ $images = $valeur->lister_galeri()->fetchAll();
 <?php else: ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Galerie</a>
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-images"></i> Galerie
+      </a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link text-white" href="../profil_artisan_client.php?id=<?= htmlspecialchars($_GET["photo"]) ?>">Quitter</a>
+            <a class="nav-link text-white" href="../profil_artisan_client.php?id=<?= htmlspecialchars($_GET["photo"]) ?>">
+              <i class="bi bi-box-arrow-left"></i> Quitter
+            </a>
           </li>
         </ul>
       </div>
@@ -103,7 +122,9 @@ $images = $valeur->lister_galeri()->fetchAll();
       <?php endforeach; ?>
     <?php else: ?>
       <div class="col-12">
-        <div class="alert alert-info text-center">Aucune photo disponible pour l’instant.</div>
+        <div class="alert alert-info text-center">
+          <i class="bi bi-info-circle"></i> Aucune photo disponible pour l’instant.
+        </div>
       </div>
     <?php endif; ?>
   </div>

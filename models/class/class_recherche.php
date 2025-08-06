@@ -8,12 +8,35 @@ class recherche{
     }
     public function set_id($id) : void{$this->id=$id;}
     public function set_query($query) : void{$this->query=$query;}
-    public function artisan(){
-        $querys="select distinct artisan.id_ar as id_pr,artisan.username,profil.nom,profil.profession,profil.image_profil,profil.document,profil.email,profil.tel,profil.description from artisan,profil where profil.nom like ? or profil.profession like ? or profil.description like ?";
-        $stmt=$this->con->prepare($querys);
-        $stmt->execute(array("%$this->query%","%$this->query%","%$this->query%"));
+    public function artisan() {
+        $querys = "SELECT DISTINCT 
+                       artisan.id_ar AS id_pr,
+                       artisan.username,
+                       profil.nom,
+                       profil.profession,
+                       profil.image_profil,
+                       profil.document,
+                       profil.email,
+                       profil.tel,
+                       profil.description
+                   FROM artisan
+                   INNER JOIN profil ON artisan.id_ar = profil.id_ar
+                   WHERE artisan.activer = 1
+                     AND (
+                         profil.nom LIKE ?
+                         OR profil.profession LIKE ?
+                         OR profil.description LIKE ?
+                     )";
+        
+        $stmt = $this->con->prepare($querys);
+        $stmt->execute(array(
+            "%$this->query%",
+            "%$this->query%",
+            "%$this->query%"
+        ));
         return $stmt;
     }
+    
     public function demande_client(){
         $querys="select * from demande where sujet like ? and id_cl=?";
         $stmt=$this->con->prepare($querys);

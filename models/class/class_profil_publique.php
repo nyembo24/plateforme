@@ -24,12 +24,23 @@ class publique{
     public function set_mail($mail) : void{$this->mail=$mail;}
     public function set_tel($tel) : void{$this->tel=$tel;}
     public function set_description($description) : void{$this->description=$description;}
-    public function selection(){
-        $query="select distinct profil.id_ar as id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=? LIMIT $this->limite, $this->afficher";
-        $stmt=$this->con->prepare($query);
+    public function selection() {
+        $query = "SELECT DISTINCT 
+                     profil.id_ar AS id_pr,
+                     profil.nom,
+                     profil.profession,
+                     profil.image_profil,
+                     profil.description
+                  FROM profil
+                  INNER JOIN artisan ON artisan.id_ar = profil.id_ar
+                  WHERE artisan.activer = ?
+                  LIMIT $this->limite, $this->afficher";
+        
+        $stmt = $this->con->prepare($query);
         $stmt->execute(array(1));
         return $stmt;
     }
+    
     public function selection_un_artisan(){
         $query="select * from profil where id_ar=?";
         $stmt=$this->con->prepare($query);

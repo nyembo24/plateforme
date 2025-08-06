@@ -155,14 +155,14 @@ $images = $vals->lister_galeri();
                 <?php while ($image = $images->fetch() and $i < 7): $i++; ?>
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="card shadow-sm h-100">
-                            <img src="../image/<?= $image["nom"] ?>" class="card-img-top img-thumbnail" alt="Image galerie">
+                            <img src="../../image/<?= $image["nom"] ?>" class="card-img-top img-thumbnail" alt="Image galerie">
                         </div>
                     </div>
                 <?php endwhile; ?>
 
                 <?php if ($i != 0): ?>
                     <div class="col-6 col-md-4 col-lg-3">
-                        <a href="adminArtisan/galeri.php?photo=<?= htmlspecialchars($_GET["id"]) ?>" title="Voir toute la galerie">
+                        <a target="_blank" href="../adminArtisan/galeri.php?photo=<?= htmlspecialchars($_GET["profil"]) ?>" title="Voir toute la galerie">
                             <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="bi bi-images" style="font-size: 2rem;"></i>
                                 <small>Voir plus</small>

@@ -57,9 +57,9 @@ class demande{
         }
     }
     public function afficher_tout_demande(){
-        $query="select * from demande where suspendu=? order by id_de DESC";
+        $query="select demande.id_de,demande.description,demande.id_cl,demande.sujet,demande.suspendu from demande,artisan where demande.suspendu=? and artisan.id_ar=? and artisan.activer=1 order by id_de DESC";
         $stmt=$this->con->prepare($query);
-        $stmt->execute(array(0));
+        $stmt->execute(array(0,$_SESSION["user"]));
         return $stmt;
     }
     public function selection_une(){
