@@ -9,7 +9,7 @@ class recherche{
     public function set_id($id) : void{$this->id=$id;}
     public function set_query($query) : void{$this->query=$query;}
     public function artisan(){
-        $querys="select artisan.id_ar as id_pr,artisan.username,profil.nom,profil.profession,profil.image_profil,profil.document,profil.email,profil.tel,profil.description from artisan,profil where profil.nom like ? or profil.profession like ? or profil.description like ?";
+        $querys="select distinct artisan.id_ar as id_pr,artisan.username,profil.nom,profil.profession,profil.image_profil,profil.document,profil.email,profil.tel,profil.description from artisan,profil where profil.nom like ? or profil.profession like ? or profil.description like ?";
         $stmt=$this->con->prepare($querys);
         $stmt->execute(array("%$this->query%","%$this->query%","%$this->query%"));
         return $stmt;

@@ -7,13 +7,21 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `TFC`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `TFC` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `TFC`;
 
 --
 -- Table structure for table `artisan`
@@ -37,7 +45,7 @@ CREATE TABLE `artisan` (
   `remember` int DEFAULT NULL,
   `nom` text,
   PRIMARY KEY (`id_ar`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +54,7 @@ CREATE TABLE `artisan` (
 
 LOCK TABLES `artisan` WRITE;
 /*!40000 ALTER TABLE `artisan` DISABLE KEYS */;
-INSERT INTO `artisan` VALUES (18,'nyembo24','$2y$10$Eo6/AaixKMDlq1oE/DrXqeQVDaZMCkZH5ciZToOth0FWLtfR3MJMm',NULL,NULL,NULL,NULL,'0990578941','morishonyembo24@gmail.com',1,NULL,NULL,NULL);
+INSERT INTO `artisan` VALUES (18,'nyembo24','$2y$10$Eo6/AaixKMDlq1oE/DrXqeQVDaZMCkZH5ciZToOth0FWLtfR3MJMm',NULL,NULL,NULL,NULL,'0990578941','morishonyembo24@gmail.com',1,NULL,NULL,NULL),(19,'ny','$2y$10$APRc/F8EVVRVKl53rzlZ3uTq/TPoHLpAdUnDheuyFBRo8hZnAnNiy',NULL,NULL,NULL,NULL,'0990578941','ny@gmail.com',1,NULL,NULL,NULL),(20,'n1','$2y$10$vKSI9Cmntsgiphr3lf7Sg.mqVs/BoTbfrspsvz3kYs/rod4gVHRJ6',NULL,NULL,NULL,NULL,'0990578941','mori@gmail.com',0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `artisan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,8 +139,36 @@ CREATE TABLE `demande` (
 
 LOCK TABLES `demande` WRITE;
 /*!40000 ALTER TABLE `demande` DISABLE KEYS */;
-INSERT INTO `demande` VALUES (34,'j&#039;aurai besoins de 3 menusier aux prix de 3$ par jours ...',11,'besoin de 3 menusier',1);
+INSERT INTO `demande` VALUES (34,'j&#039;aurai besoins de 3 menusier aux prix de 3$ par jours ...',11,'besoin de 3 menusier',0);
 /*!40000 ALTER TABLE `demande` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `galeri`
+--
+
+DROP TABLE IF EXISTS `galeri`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `galeri` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) DEFAULT NULL,
+  `id_ar` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nom_id_ar` (`nom`,`id_ar`),
+  KEY `cmd1` (`id_ar`),
+  CONSTRAINT `cmd1` FOREIGN KEY (`id_ar`) REFERENCES `artisan` (`id_ar`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `galeri`
+--
+
+LOCK TABLES `galeri` WRITE;
+/*!40000 ALTER TABLE `galeri` DISABLE KEYS */;
+INSERT INTO `galeri` VALUES (19,'22.jpg',18),(18,'33.jpg',18),(17,'44.jpg',18),(21,'44.jpg',19),(16,'55.jpg',18),(15,'Capture d’écran du 2024-10-10 20-00-52.png',18),(14,'Capture d’écran du 2024-11-16 07-38-11.png',18),(8,'Capture d’écran du 2025-07-25 13-59-17.png',18),(7,'Copilot_20250605_200449.png',18),(9,'images.jpeg',18);
+/*!40000 ALTER TABLE `galeri` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -157,7 +193,7 @@ CREATE TABLE `message` (
   CONSTRAINT `avis` FOREIGN KEY (`id_av`) REFERENCES `avis` (`id_av`),
   CONSTRAINT `demande` FOREIGN KEY (`id_de`) REFERENCES `demande` (`id_de`),
   CONSTRAINT `n_ar` FOREIGN KEY (`id_ar`) REFERENCES `artisan` (`id_ar`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +202,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (108,'bonjour ça va suis l&#039;artisan nyembo',34,NULL,18,1,NULL),(109,'es que vous êtes bien un menuisier ou est votre menuiserie  ',34,NULL,18,0,NULL),(110,'bonjour',34,NULL,18,1,NULL),(111,'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn',34,NULL,18,1,NULL),(112,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj',34,NULL,18,1,NULL),(113,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj',34,NULL,18,1,NULL),(114,'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',34,NULL,18,1,NULL),(115,'très bien causons trop',34,NULL,18,0,NULL),(116,'non',34,NULL,18,0,NULL),(117,'hhh',34,NULL,18,1,NULL),(118,'non',34,NULL,18,1,NULL),(119,'Bonjour ',34,NULL,18,0,NULL),(120,'ça va',34,NULL,18,1,NULL),(121,'Très bien causé trop ',34,NULL,18,0,NULL),(122,'rien de spécial',34,NULL,18,1,NULL),(123,'Tu es sur',34,NULL,18,0,NULL);
+INSERT INTO `message` VALUES (124,'bonjour ça va suis partant pour cette démande',34,NULL,18,1,NULL),(125,'bonjour ',34,NULL,18,0,NULL),(126,'xonsernant cette offre ou est votre antélier',34,NULL,18,0,NULL),(127,'bonjour nyembo ça va',34,NULL,18,0,NULL);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +226,7 @@ CREATE TABLE `profil` (
   PRIMARY KEY (`id_pr`),
   KEY `artisan` (`id_ar`),
   CONSTRAINT `artisan` FOREIGN KEY (`id_ar`) REFERENCES `artisan` (`id_ar`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +235,7 @@ CREATE TABLE `profil` (
 
 LOCK TABLES `profil` WRITE;
 /*!40000 ALTER TABLE `profil` DISABLE KEYS */;
-INSERT INTO `profil` VALUES (5,'name','artisan','defaul.png','Chapitre III.pdf','exemple@gmail.com','+243...',18,NULL);
+INSERT INTO `profil` VALUES (5,'patrick','artiste','images.jpeg','document.txt','nnn@gmail.com','0990578941',18,'artsan par jour 5$'),(6,'kakuler mbusa','menusier','images.jpeg','QUATRIEME CHAPITRE.pdf','morishonyembo24@gmail.com','0990578941',19,'je suis un menusier travaillant à freelance aux prix de 5$ par jour'),(7,'name','artisan','defaul.png','Chapitre III.pdf','exemple@gmail.com','+243...',20,NULL);
 /*!40000 ALTER TABLE `profil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-13 21:08:30
+-- Dump completed on 2025-08-06 12:20:08

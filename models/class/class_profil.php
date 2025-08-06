@@ -65,10 +65,33 @@ class profil{
             return false;
         }
     }
+    public function déplacer_galeri(){
+        $dossier="../../image/".$this->photo_profil;
+        if(move_uploaded_file($this->tmp_photo,$dossier)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function inserer_galeri(){
+        $query="insert ignore into galeri(nom,id_ar)values(?,?)";
+        $stmt=$this->con->prepare($query);
+        if($stmt->execute(array($this->photo_profil,$_SESSION['user']))){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function lister(){
         $query="select * from profil where id_ar=?";
         $stmt=$this->con->prepare($query);
         $stmt->execute(array($_SESSION['user']));
+        return $stmt;
+    }
+    public function lister_galeri(){
+        $query="select nom from galeri where id_ar=? order by id desc";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id));
         return $stmt;
     }
 

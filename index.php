@@ -27,7 +27,6 @@ if(isset($_POST["query"]) and ! empty($_POST["query"])){
     $val=$valeur->selection();
     $values="";
 }
-
 ?>
 <?php if(isset($_GET["sms"]) and ! empty($_GET["sms"])) {?>
     <script>alert('<?=$_GET["sms"] ?>')</script>

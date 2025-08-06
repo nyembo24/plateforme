@@ -8,6 +8,22 @@
         header("location:../../index.php");
         exit;
     }
+    if(isset($_FILES["images"])){
+        $photo=[];
+        foreach($_FILES["images"]["tmp_name"] as $key=>$tmp_name){
+            $valeur->set_photo_profil(htmlspecialchars($_FILES["images"]["name"][$key]));
+            $valeur->set_tmp_photo(htmlspecialchars($_FILES["images"]["tmp_name"][$key]));
+            if($valeur->déplacer_galeri()){
+                $photo[]=htmlspecialchars($_FILES["images"]["name"][$key]);
+            }
+        }
+        foreach($photo as $vl){
+            $valeur->set_photo_profil(htmlspecialchars($vl));
+            $valeur->inserer_galeri();
+        }
+        header("location:../../page/adminArtisan/profil.php");
+        exit;
+    }
     if(isset($_FILES["profil"]) and isset($_FILES["document"])){
         $valeur->set_id($_SESSION["user"]);
         $valeur->set_nom(htmlspecialchars($_POST["nom"]));

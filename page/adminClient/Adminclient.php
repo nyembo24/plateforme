@@ -44,49 +44,6 @@ if(isset($_POST["query"]) and ! empty($_POST["query"])){
     <link rel="stylesheet" href="../../bootstrap.css">
     <link rel="stylesheet" href="../../bootsrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../style/admin_client.css">
-    <style>
-        /* General Styles */
-        * {
-            font-size: 1em;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, rgba(16, 16, 17, 0.8), rgba(49, 51, 53, 0.1)),
-              url("../image/image_developement/client.jpg");
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
-        }
-        .bloc-bienvenu {
-            display: flex;
-            flex-direction: column;
-            border-radius: 2%;
-            height: 60vh;
-            justify-content: center;
-            align-items: center;
-            background-color: blueviolet;
-        }
-        .bloc-bienvenu h4, .bloc-bienvenu p {
-            color: aliceblue;
-            text-align: center;
-            font-size: 2em;
-            padding: 1%;
-        }
-        .artisans-list {
-            background-color: rgb(203, 209, 209);
-            margin-top: 2%;
-            padding: 2%;
-            color: white;
-        }
-        .populaires {
-            background-color: cadetblue;
-            padding: 1%;
-        }
-        .populaires h4, .populaires span {
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <?php include_once("../../navbar/navbarClient.php"); ?>

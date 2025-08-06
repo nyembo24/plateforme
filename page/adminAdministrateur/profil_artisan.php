@@ -1,6 +1,7 @@
 <?php
 require_once('../../connexion/conn.php');
 require_once("../../models/class/class_profil_publique.php");
+require_once("../../models/class/class_profil.php");
 if(! isset($_GET["profil"]) || ! isset($_SESSION["admin"])){
     header("location:../../index.php");
     exit;
@@ -8,8 +9,11 @@ if(! isset($_GET["profil"]) || ! isset($_SESSION["admin"])){
 $db=new connexion();
 $conn=$db->getconnexion();
 $valeur= new publique($conn);
+$vals= new profil($conn);
 $valeur->set_id(htmlspecialchars($_GET['profil']));
 $val=$valeur->selection_un_artisan();
+$vals->set_id(htmlspecialchars($_GET["profil"]));
+$images = $vals->lister_galeri();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -140,22 +144,38 @@ $val=$valeur->selection_un_artisan();
             </div>
 
             <hr>
-
-            <!-- Galerie -->
-            <div class="bibliotheque">
-                <h4 class="text-center mb-3">Galerie</h4>
-                <div class="d-flex justify-content-center flex-wrap">
-                    <img src="../../image/defaul.png" alt="photo">
-                    <img src="../../image/Capture d’écran du 2024-10-10 20-00-52.png" alt="">
-                    <img src="../../image/defaul.png" alt="photo">
-                    <img src="../../image/Capture d’écran du 2024-10-10 20-00-52.png" alt="">
-                    <img src="../../image/defaul.png" alt="photo">
-                    <img src="../../image/Capture d’écran du 2024-10-10 20-00-52.png" alt="">
-                    <img src="../../image/defaul.png" alt="photo">
-                    <img src="../../image/Capture d’écran du 2024-10-10 20-00-52.png" alt="">
-                    <!-- Ajoute d'autres images ici si disponibles -->
-                </div>
+                    <!-- Galerie améliorée -->
+        <div class="mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-center flex-grow-1">Galerie</h4>
             </div>
+
+            <?php $i = 0; ?>
+            <div class="row g-3">
+                <?php while ($image = $images->fetch() and $i < 7): $i++; ?>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <img src="../image/<?= $image["nom"] ?>" class="card-img-top img-thumbnail" alt="Image galerie">
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+
+                <?php if ($i != 0): ?>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a href="adminArtisan/galeri.php?photo=<?= htmlspecialchars($_GET["id"]) ?>" title="Voir toute la galerie">
+                            <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="bi bi-images" style="font-size: 2rem;"></i>
+                                <small>Voir plus</small>
+                            </div>
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">Aucune photo disponible pour l’instant.</div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
         </div>
     </div>
 

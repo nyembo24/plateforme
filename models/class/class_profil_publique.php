@@ -25,7 +25,7 @@ class publique{
     public function set_tel($tel) : void{$this->tel=$tel;}
     public function set_description($description) : void{$this->description=$description;}
     public function selection(){
-        $query="select profil.id_ar as id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=? LIMIT $this->limite, $this->afficher";
+        $query="select distinct profil.id_ar as id_pr,profil.nom,profil.profession,profil.image_profil,profil.description from profil,artisan where artisan.activer=? LIMIT $this->limite, $this->afficher";
         $stmt=$this->con->prepare($query);
         $stmt->execute(array(1));
         return $stmt;

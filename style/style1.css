@@ -1,3 +1,6 @@
+*{
+    /* border: red 1px solid; */
+}
 .oublier{
     display: flex;
     align-items: center;
@@ -24,4 +27,9 @@
     border: 5px solid white;
     object-fit: cover;
     margin-top: -75px;
+}
+#ajouterphoto{
+    display: flex;
+    justify-content: end;
+    padding: 2px;
 }
