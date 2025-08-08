@@ -40,6 +40,12 @@ class publique{
         $stmt->execute(array(1));
         return $stmt;
     }
+    public function lister_envie(){
+        $query="select * from avis where id_ar=? and valider=0";
+        $stmt=$this->con->prepare($query);
+        $stmt->execute(array($this->id));
+        return $stmt->fetchall();
+    }
     
     public function selection_un_artisan(){
         $query="select * from profil where id_ar=?";
@@ -58,7 +64,7 @@ class publique{
         }
     }
     public function select_commentaire(){
-        $query="select description from avis where id_ar=?";
+        $query="select description from avis where id_ar=? and valider=1";
         $stmt=$this->con->prepare($query);
         $stmt->execute(array($this->id));
         return $stmt;

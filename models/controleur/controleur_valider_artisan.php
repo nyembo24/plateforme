@@ -9,6 +9,17 @@
     $db=new connexion();
     $conn=$db->getconnexion();
     $valeur= new valider($conn);
+    if(isset($_GET["rejeterenvis"])){
+        $valeur->set_id(htmlspecialchars($_GET["rejeterenvis"]));
+        $valeur->rejeter_envi();
+        header("location:../../page/adminAdministrateur/lister_avis.php");
+        exit;
+    }elseif(isset($_GET["validerenvis"])){
+        $valeur->set_id(htmlspecialchars($_GET["validerenvis"]));
+        $valeur->valider_envi();
+        header("location:../../page/adminAdministrateur/lister_avis.php");
+        exit;
+    }
     if(isset($_GET["valider"]) and ! empty($_GET["valider"])){
         $valeur->set_id(htmlspecialchars($_GET["valider"]));
         $valeur->activer_profil();

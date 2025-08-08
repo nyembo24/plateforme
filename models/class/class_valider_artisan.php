@@ -34,5 +34,25 @@ class valider{
         $stmt->execute(array(0));
         return $stmt;
     }
+    public function rejeter_envi(){
+        $query="delete from avis where id_av=?";
+        $stmt=$this->con->prepare($query);
+        if($stmt->execute(array($this->id))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public function valider_envi(){
+        $query="update avis set valider=1 where id_av=?";
+        $stmt=$this->con->prepare($query);
+        if($stmt->execute(array($this->id))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

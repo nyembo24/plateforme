@@ -57,7 +57,7 @@ $val = $valeur->lister_avis();
           </div>
           <div class="card-body">
             <?php while($contanu = $val->fetch()){ ?>
-              <a class="user-link" href="profil_artisan.php?profil=<?= $contanu['id_ar'] ?>">
+              <a class="user-link" href="envis.php?profil=<?= $contanu['id_ar'] ?>">
                 <i class="bi bi-person-fill me-2"></i><?= $contanu['username'] ?>
               </a>
             <?php } ?>

@@ -14,6 +14,7 @@ $valeur->set_id(htmlspecialchars($_GET['profil']));
 $val=$valeur->selection_un_artisan();
 $vals->set_id(htmlspecialchars($_GET["profil"]));
 $images = $vals->lister_galeri();
+$envis=$valeur->lister_envie();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -105,12 +106,6 @@ $images = $vals->lister_galeri();
                 </a>
                 <h3 class="mt-3"><?= $val["nom"] ?></h3>
                 <p class="text-muted mb-2"><?= $val["profession"] ?></p>
-                <?php if(isset($_SESSION["patron"])){ ?>
-                    <a href="message.php?id=<?= $_GET["profil"] ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> Contacter</a>
-                <?php }else{ ?>
-                    <a href="../../models/controleur/controleur_valider_artisan.php?valider=<?= $_GET["profil"] ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-chat-dots"></i> valider</a>
-                    <a href="?profil=<?= $_GET["profil"] ?> && rejeter=<?= $_GET["profil"] ?>" class="btn btn-outline-danger text-dark btn-sm"><i class="bi bi-chat-dots"></i> réjeter</a>
-                <?php } ?>
             </div>
 
             <hr>
@@ -142,7 +137,30 @@ $images = $vals->lister_galeri();
                     <i class="bi bi-eye"></i> voir le document
                 </a>
             </div>
-
+            <div class="text-center">
+                <h6>envis des client</h6>
+                <div class="mb-2">
+                    <?php foreach($envis as $envi){ ?>
+                        <div class="col-lg-9">
+                            <div class="card offset-4">
+                                <div class="card-body">
+                                    <p><?= $envi["description"] ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <a class="btn btn-danger w-100" href="../../models/controleur/controleur_valider_artisan.php?rejeterenvis=<?= $envi["id_av"] ?>">rejeter</a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a class="btn btn-success w-100" href="../../models/controleur/controleur_valider_artisan.php?validerenvis=<?= $envi["id_av"] ?>">valider</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php }?>
+                </div>
+            </div>
             <hr>
                     <!-- Galerie améliorée -->
         <div class="mt-5">
